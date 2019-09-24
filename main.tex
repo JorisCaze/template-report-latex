@@ -1,0 +1,49 @@
+\documentclass{report}
+\usepackage{packages}
+
+\begin{document}
+
+\input{Chapter/Preambule/pdg.tex}
+\clearpage
+
+%\input{Chapter/Preambule/remerciements.tex}
+%\clearpage
+
+%\input{Chapter/Preambule/resume.tex}
+
+\setcounter{tocdepth}{3} % Niveau de profondeur du sommaire
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+
+%\chapter*{Chapitre non numéroté}
+%\addcontentsline{toc}{chapter}{Chapitre non numéroté}
+%\input{Chapter/ChapNoNumber/chapNoNumber.tex}
+
+\chapter{Introduction}
+\input{Chapter/Introduction/intro.tex}
+
+\chapter{Partie X}
+\input{Chapter/Part1/part1.tex}
+
+\chapter{Partie X}
+\input{Chapter/Part2/part2.tex}
+
+\chapter{Conclusions et perspectives}
+\input{Chapter/Conclusion/conclusion.tex}
+
+\clearpage % biblio sur page indépendante
+\addcontentsline{toc}{chapter}{Bibliographie}
+%\begin{multicols}{2}
+\bibliographystyle{apalike} % apalike = fat - abbrv = slim
+\bibliography{references}
+%\end{multicols}
+
+% Annexes
+\clearpage
+\appendix
+\input{Chapter/appendix.tex}
+
+\end{document}

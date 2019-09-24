@@ -1,0 +1,59 @@
+\ProvidesPackage{packages}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage[a4paper,margin=2cm,headheight=13pt]{geometry}
+
+\renewcommand{\familydefault}{\sfdefault} % Font sans serif
+
+\usepackage{graphicx} % Figures
+\usepackage{comment}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{appendix}
+\usepackage{enumitem} % Changer style liste a puces
+\usepackage{breakcites} % Retour a ligne pour les citations trop longues 
+
+\usepackage[justification=centering]{caption} % Centrer les legendes des figures
+\usepackage{subfig}
+
+\usepackage{amsmath} % Eq. Maths
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+
+\usepackage[colorlinks=true, linkcolor=black, citecolor=blue]{hyperref} % Sommaire dynamique
+\hypersetup{urlcolor=blue}
+
+\usepackage{fancyhdr} % Personnalisation entete
+%\usepackage[firstpage]{draftwatermark} % Filigrane CONFIDENTIEL
+\usepackage{sectsty}  % Personnalisation couleur sections et chapitres
+\usepackage[dvipsnames]{xcolor}
+\pagestyle{fancy}
+
+% Definition des couleurs et autres pour les sections
+\chapterfont{\color{MidnightBlue}} 
+\sectionfont{\color{NavyBlue}}
+\setcounter{secnumdepth}{3}
+
+% Def. d'un environnement 
+\newtheorem{rem}{Remarque} % Def. d'un environnement remarque
+\newtheorem{demo}{Démonstration}
+
+% Def. commande equations
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\p}[2]{\partial_{#2} (#1)}
+\newcommand{\pds}[2]{\partial_{#2} #1}
+\newcommand{\pdt}[3]{\left( \frac{\partial #1}{\partial #2} \right)_{#3}}
+\newcommand{\pinf}[1]{p_{\infty #1}}
+\newcommand{\ud}{\frac{1}{2}}
+
+% Def. commande annexe
+\newcommand{\annexe}[1]{%
+	\refstepcounter{chapter}%
+	\phantomchapter%
+	\addcontentsline{toc}{section}{\appendixname~{\thechapter}: #1}%
+	\chapter*{\appendixname~{\thechapter}: #1}}
+
+\fancyhead[L]{Nom du rapport}
+\fancyhead[R]{}

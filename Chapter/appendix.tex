@@ -1,0 +1,14 @@
+% Affiche un chapitre sans en-tête
+\chapter*{Annexes}
+% Ajout dans la table des matières
+\addcontentsline{toc}{chapter}{Annexes}	
+% Modification affichage nom annexe avec (A)
+\makeatletter\renewcommand\thesection{A.\@arabic\c@section}\makeatother
+
+% Renumerotation des figures
+\makeatletter\renewcommand{\thefigure}{\thesection-\@arabic\c@figure}\makeatother
+% Renumerotation des equations
+\makeatletter\renewcommand{\theequation}{\thesection-\@arabic\c@equation}\makeatother
+
+\section{Première annexe}
+\lipsum[1-2]

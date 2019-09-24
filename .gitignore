@@ -1,0 +1,14 @@
+# Config. files
+*.DS_Store
+*.vscode
+
+# Compilation files
+*.aux
+*.bbl
+*.blg
+*.log
+*.nav
+*.out
+*.snm
+*.gz
+*.toc
