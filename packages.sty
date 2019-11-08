@@ -6,6 +6,7 @@
 \usepackage[a4paper,margin=2cm,headheight=13pt]{geometry}
 
 \renewcommand{\familydefault}{\sfdefault} % Font sans serif
+\frenchbsetup{StandardLists=true} % Bulletpoint pour listes a puces
 
 \usepackage{graphicx} % Figures
 \usepackage{comment}
@@ -17,6 +18,7 @@
 
 \usepackage[justification=centering]{caption} % Centrer les legendes des figures
 \usepackage{subfig}
+\usepackage{placeins} % Garder les fig. dans section/sous-section
 
 \usepackage{amsmath} % Eq. Maths
 \usepackage{amssymb}
@@ -31,22 +33,73 @@
 \usepackage[dvipsnames]{xcolor}
 \pagestyle{fancy}
 
+\usepackage{tcolorbox} % Colorer zone de texte
+\usepackage{soul} % Surligner du texte
+\definecolor{cgray}{rgb}{0.85, 0.85, 0.85}
+\newcommand{\hlg}[1]{\sethlcolor{cgray}\hl{#1}}
+
 % Definition des couleurs et autres pour les sections
-\chapterfont{\color{MidnightBlue}} 
-\sectionfont{\color{NavyBlue}}
+%\chapterfont{\color{MidnightBlue}} 
+%\sectionfont{\color{NavyBlue}}
 \setcounter{secnumdepth}{3}
 
 % Def. d'un environnement 
-\newtheorem{rem}{Remarque} % Def. d'un environnement remarque
-\newtheorem{demo}{Démonstration}
+\newcommand{\ti}[1]{\textit{#1}} % Italique
+\newcommand{\tu}{\textunderscore} 
+\newcommand{\tbf}[1]{\textbf{#1}} % Gras
+
+% Environnement Rappel
+\newenvironment{rappel}[1]
+{
+  \par\vspace{\baselineskip}\begin{tcolorbox}\noindent
+  \textbf{Rappel : }#1\itshape%
+  \newline\noindent\ignorespaces
+}%
+{% end code
+  \end{tcolorbox}\ignorespacesafterend
+}
+
+% Environnement Demonstration
+\newenvironment{demo}[1]
+{
+  \par\vspace{\baselineskip}\begin{tcolorbox}\noindent
+  \textbf{Démonstration : }#1\itshape%
+  \newline\noindent\ignorespaces
+}
+{
+  \end{tcolorbox}\ignorespacesafterend
+}
+
+% Environnement Remarque
+\newenvironment{rem}[1]
+{
+  \par\vspace{\baselineskip}\noindent
+  \textbf{Remarque : }#1\itshape%
+  \newline\noindent\ignorespaces
+}
+{
+  \ignorespacesafterend
+} 
 
 % Def. commande equations
-\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\p}[2]{\partial_{#2} (#1)}
-\newcommand{\pds}[2]{\partial_{#2} #1}
-\newcommand{\pdt}[3]{\left( \frac{\partial #1}{\partial #2} \right)_{#3}}
-\newcommand{\pinf}[1]{p_{\infty #1}}
-\newcommand{\ud}{\frac{1}{2}}
+	% Derivees
+	\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} % Partial Derivative
+	\newcommand{\pds}[2]{\partial_{#2} #1} % Partial Derivative Short
+	\newcommand{\pdsb}[2]{\partial_{#2} (#1)} % Partial Derivative Short with Bracket
+	\newcommand{\pdto}[3]{\left( \frac{\partial #1}{\partial #2} \right)_{#3}} % Partial Derivative respect To variable
+	\newcommand{\pdtobb}[3]{\frac{\partial}{\partial #2}\left(#1\right)_{#3}} % Partial Derivative respect To variable with Big Bracket
+	\newcommand{\df}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}} % Derivative
+
+	% Pinf
+	\newcommand{\pinf}{P_{\infty}}
+	\newcommand{\pinfk}[1]{P_{\infty,#1}}
+
+	% Quick maths 
+	\newcommand{\ud}{\frac{1}{2}}
+	\newcommand{\sumiN}{\sum_{i=1}^{N}}
+
+% Raccourci texte
+%\newcommand{\sg}{Stiffened Gas }
 
 % Def. commande annexe
 \newcommand{\annexe}[1]{%
