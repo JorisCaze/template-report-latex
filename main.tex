@@ -1,10 +1,31 @@
-\documentclass[french]{report}
+\documentclass[french]{article}
+% document class:
+% - article: Elt structure max section 
+% - report: Elt structure max chapter
 \usepackage{packages}
+
+% Page de garde
+% - Classique
+% - Personnalisee
+
+% Page de garde classique
+\title{Titre}
+\author{Joris Cazé}
+\date{\today}
 
 \begin{document}
 
-\input{Chapter/Preambule/pdg.tex}
-\clearpage
+% Page de garde classique
+\maketitle
+\begin{abstract}
+	Résumé du contenu du rapport
+\end{abstract}
+%\clearpage
+
+% Page de garde personnalisee
+%\input{Chapter/Preambule/pdg.tex}
+%\clearpage
+
 
 %\input{Chapter/Preambule/remerciements.tex}
 %\clearpage
@@ -22,28 +43,33 @@
 %\addcontentsline{toc}{chapter}{Chapitre non numéroté}
 %\input{Chapter/ChapNoNumber/chapNoNumber.tex}
 
-\chapter{Introduction}
+%\chapter{Introduction}
+\section{Introduction}
 \input{Chapter/Introduction/intro.tex}
 
-\chapter{Partie X}
+%\chapter{Partie X}
+\section{Partie X}
 \input{Chapter/Part1/part1.tex}
 
-\chapter{Partie X}
+%\chapter{Partie X}
+\section{Partie X}
 \input{Chapter/Part2/part2.tex}
 
-\chapter{Conclusions et perspectives}
+%\chapter{Conclusions et perspectives}
+\section{Conclusions et perspectives}
 \input{Chapter/Conclusion/conclusion.tex}
 
 \clearpage % biblio sur page indépendante
-\addcontentsline{toc}{chapter}{Bibliographie}
+%\addcontentsline{toc}{chapter}{Bibliographie}
+\addcontentsline{toc}{section}{Références}
 %\begin{multicols}{2}
 \bibliographystyle{apalike} % apalike = fat - abbrv = slim
 \bibliography{references}
 %\end{multicols}
 
 % Annexes
-\clearpage
-\appendix
-\input{Chapter/appendix.tex}
+%\clearpage
+%\appendix
+%\input{Chapter/appendix.tex}
 
 \end{document}

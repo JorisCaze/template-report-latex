@@ -6,6 +6,8 @@
 *.aux
 *.bbl
 *.blg
+*.lof
+*.lot
 *.log
 *.nav
 *.out
