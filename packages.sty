@@ -1,52 +1,67 @@
 \ProvidesPackage{packages}
 
+% ------------------------------------------------------------------ %
+
+% Setup format/langue
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{babel}
 \usepackage[a4paper,margin=2cm,headheight=13pt]{geometry}
 
+% ------------------------------------------------------------------ %
+
+% Mise en page
+
 \renewcommand{\familydefault}{\sfdefault} % Font sans serif
 \frenchbsetup{StandardLists=true} % Bulletpoint pour listes a puces
-
-\usepackage{graphicx} % Figures
-\usepackage{comment}
-\usepackage{lipsum}
-\usepackage{multicol}
-\usepackage{appendix}
 \usepackage{enumitem} % Changer style liste a puces
+
+\usepackage[colorlinks=true, linkcolor=black, citecolor=blue]{hyperref} % Sommaire dynamique
+\setcounter{secnumdepth}{3} % Profondeur sommaire
+\hypersetup{urlcolor=blue} % Coloration liens
+\usepackage{appendix} % Annexes
+\usepackage{fancyhdr} % Personnalisation entete
+%\usepackage[firstpage]{draftwatermark} % Filigrane
+\usepackage{sectsty} % Personnalisation couleur sections et chapitres
+\usepackage[dvipsnames]{xcolor} % Couleurs 
+\pagestyle{fancy}
+
+\usepackage{multicol} % Colonnes
+\usepackage{lipsum} % Faux texte
 \usepackage{breakcites} % Retour a ligne pour les citations trop longues 
 
+\usepackage{graphicx} % Figures
 \usepackage[justification=centering]{caption} % Centrer les legendes des figures
 \usepackage{subfig}
 \usepackage{placeins} % Garder les fig. dans section/sous-section
-
-\usepackage{amsmath} % Eq. Maths
-\usepackage{amssymb}
-\usepackage{mathrsfs}
-
-\usepackage[colorlinks=true, linkcolor=black, citecolor=blue]{hyperref} % Sommaire dynamique
-\hypersetup{urlcolor=blue}
-
-\usepackage{fancyhdr} % Personnalisation entete
-%\usepackage[firstpage]{draftwatermark} % Filigrane CONFIDENTIEL
-\usepackage{sectsty}  % Personnalisation couleur sections et chapitres
-\usepackage[dvipsnames]{xcolor}
-\pagestyle{fancy}
 
 \usepackage{tcolorbox} % Colorer zone de texte
 \usepackage{soul} % Surligner du texte
 \definecolor{cgray}{rgb}{0.85, 0.85, 0.85}
 \newcommand{\hlg}[1]{\sethlcolor{cgray}\hl{#1}}
+%\chapterfont{\color{MidnightBlue}} % Couleur Chapitre
+%\sectionfont{\color{NavyBlue}} % Couleur Section
 
-% Definition des couleurs et autres pour les sections
-%\chapterfont{\color{MidnightBlue}} 
-%\sectionfont{\color{NavyBlue}}
-\setcounter{secnumdepth}{3}
+% ------------------------------------------------------------------ %
 
-% Def. d'un environnement 
+% Maths
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+
+% ------------------------------------------------------------------ %
+
+% Def. raccourcis commandes
+
 \newcommand{\ti}[1]{\textit{#1}} % Italique
-\newcommand{\tu}{\textunderscore} 
+\newcommand{\tu}{\textunderscore} % Underscore
 \newcommand{\tbf}[1]{\textbf{#1}} % Gras
+
+% ------------------------------------------------------------------ %
+
+% Environnements
 
 % Environnement Rappel
 \newenvironment{rappel}[1]
@@ -54,8 +69,8 @@
   \par\vspace{\baselineskip}\begin{tcolorbox}\noindent
   \textbf{Rappel : }#1\itshape%
   \newline\noindent\ignorespaces
-}%
-{% end code
+}
+{
   \end{tcolorbox}\ignorespacesafterend
 }
 
@@ -81,7 +96,10 @@
   \ignorespacesafterend
 } 
 
+% ------------------------------------------------------------------ %
+
 % Def. commande equations
+
 	% Derivees
 	\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}} % Partial Derivative
 	\newcommand{\pds}[2]{\partial_{#2} #1} % Partial Derivative Short
@@ -98,15 +116,19 @@
 	\newcommand{\ud}{\frac{1}{2}}
 	\newcommand{\sumiN}{\sum_{i=1}^{N}}
 
-% Raccourci texte
-%\newcommand{\sg}{Stiffened Gas }
+% ------------------------------------------------------------------ %
 
-% Def. commande annexe
+% Def. style annexe
+
 \newcommand{\annexe}[1]{%
 	\refstepcounter{chapter}%
 	\phantomchapter%
 	\addcontentsline{toc}{section}{\appendixname~{\thechapter}: #1}%
 	\chapter*{\appendixname~{\thechapter}: #1}}
+
+% ------------------------------------------------------------------ %
+
+% Header
 
 \fancyhead[L]{Nom du rapport}
 \fancyhead[R]{}
